@@ -1,0 +1,10 @@
+ <div class = "panel panel-default">
+   <div class = "panel-heading"> 
+      <p>Board Information</p>
+   </div>
+    <div class =  "panel-body">
+        <h1>Board: <%= @board.sn %></h1>
+        <h2>Firmware Version: <%= @board.firmware %></h2>
+        <%= link_to '<i class="glyphicon glyphicon-pencil"></i> Edit'.html_safe, edit_board_path(@board), class: "btn" %> 
+    </div>
+</div>  

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Solaflect Internal</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "http://yandex.st/bootstrap/3.0.2/css/bootstrap.min.css", media: "all" %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "http://yandex.st/bootstrap/3.0.2/js/bootstrap.min.js" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar nav-tabs navbar-inverse navbar-static-top">
+    <div class="container">
+        <h5>Solaflect Service Database - v5.2</h5>
+      <ul class="nav navbar-nav">
+          <li><%= link_to "Boards",boards_path %></li>
+          <li><%= link_to "Boxes", boxes_path %></li>
+          <li><%= link_to "Machines", machines_path %></li>
+          <li><%= link_to "Sites", machines_path %></li> 
+          </ul>
+          <ul class="nav navbar-nav navbar-right">   
+            <%= render 'devise/menu/registration_items' %>
+            <%= render 'devise/menu/login_items' %>
+          </ul>     
+    </div>
+  </nav>
+   
+  <div class="container">
+    <%= yield %>
+  </div>
+
+</body>
+</html>

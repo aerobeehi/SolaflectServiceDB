@@ -1,0 +1,15 @@
+ <div class = "panel panel-default">
+   <div class = "panel-heading"> 
+      <p>Machine Information</p>
+   </div>
+    <div class =  "panel-body">
+        <h2>Machine: <%= @machine.box.board.sn %></h2>
+        <h3>Box: <%= @machine.box.sn %></h3>
+        <h3>Firmware Version: <%= @machine.box.board.firmware %></h3>
+        
+     <div class = "well" >
+            <%= link_to '<i class="glyphicon glyphicon-pencil"></i> Edit Machine'.html_safe, edit_machine_path(@machine), class: "btn btn-default" %> 
+            <%= link_to '<i class="glyphicon glyphicon-pencil"></i> FAT Test'.html_safe, new_machine_fat_test_path(@machine, @fat_test), class: "btn btn-default" %></td>
+        </div>
+    </div>
+</div>  

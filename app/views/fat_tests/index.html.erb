@@ -1,0 +1,23 @@
+<h1>Listing fat_tests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fat_tests.each do |fat_test| %>
+      <tr>
+        <td><%= link_to 'Show', fat_test %></td>
+        <td><%= link_to 'Edit', edit_fat_test_path(fat_test) %></td>
+        <td><%= link_to 'Destroy', fat_test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fat test', new_fat_test_path %>

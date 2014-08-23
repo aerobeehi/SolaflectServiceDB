@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  fails_status: 1
+  log_id: 
+  log_type: Log
+
+two:
+  name: MyString
+  fails_status: 1
+  log_id: 
+  log_type: Log

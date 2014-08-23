@@ -1,0 +1,14 @@
+// Place all the styles related to the Boxes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.fail{
+  background-color: rgba(255, 0, 0, 0.31);
+  color: #333;
+}
+
+.pass{
+  background-color: rgba(10, 255, 0, 0.31);
+  color: #333;
+}

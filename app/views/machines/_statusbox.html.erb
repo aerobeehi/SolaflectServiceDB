@@ -1,0 +1,10 @@
+ <div class = "panel panel-default">
+   <div class = "panel-heading"> 
+      <p>Status Information</p>
+   </div>
+    <div class =  "panel-body">
+        <h3>Machine Status:  <%= @machine.servicestatus %> </h3>
+        <h3>Box Status: <%= @machine.box.servicestatus %> </h3>
+        <h3>Board Status: <%= @machine.box.board.servicestatus %> </h3>
+    </div>
+</div>  

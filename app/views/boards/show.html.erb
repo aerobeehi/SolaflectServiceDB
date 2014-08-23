@@ -1,0 +1,21 @@
+<div class= "row">
+    <div class= "col-md-6">
+      <%= render "infobox"%>
+    </div>
+    <div class= "col-md-6">
+      <%= render "statusbox"%>
+    </div>     
+</div>   
+
+
+
+<hr />
+ 
+<%= render "boardlogs" %>
+
+
+<div class="well">
+  <%= link_to "New Log", new_board_log_path(@board), class: "btn btn-default" %>
+  <%= link_to "Back to Boards", boards_path(@boards), class: "btn btn-default" %>     
+</div>
+

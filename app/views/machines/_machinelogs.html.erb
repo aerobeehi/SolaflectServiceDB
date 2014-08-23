@@ -1,0 +1,47 @@
+<h3>Machine Logs</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Observation</th>
+      <th>Observation Date</th>
+      <th>Action</th>
+      <th>Action Date</th>
+      <th>Assigned To</th>    
+      <th>Status</th>    
+      <td>&nbsp;</td>
+    </tr>
+  </thead>
+   <% if @machine.logs.count > 0 %>
+    
+    <% @machine.logs.order([created_at: :desc]).each do |log| %>
+    
+        <% if log.status == "open"  %>
+                <tr class="warning row-fluid">
+                    <td><%= log.observation %></td>
+                    <td><%= log.observationdate %></td>
+                    <td><%= log.action %></td>
+                    <td><%= log.actiondate %></td>
+                    <td><%= log.assignedtouser %></td>
+                    <td><%= log.status.humanize %></td>  
+                    <td><%= link_to '<i class="glyphicon glyphicon-eye-open"></i> View'.html_safe, machine_log_path(@machine, log), class: "btn" %><%= link_to '<i class="glyphicon glyphicon-pencil"></i> Edit'.html_safe, edit_machine_log_path(@machine, log), class: "btn" %></td> 
+                </tr>
+              <% else %>
+                <tr class="default row-fluid">
+                    <td><%= log.observation %></td>
+                    <td><%= log.observationdate %></td>
+                    <td><%= log.action %></td>
+                    <td><%= log.actiondate %></td>
+                    <td><%= log.assignedtouser %></td>
+                    <td><%= log.status.humanize %></td>
+                    <td><%= link_to '<i class="glyphicon glyphicon-eye-open"></i> View'.html_safe, machine_log_path(@machine, log), class: "btn" %><%= link_to '<i class="glyphicon glyphicon-pencil"></i> Edit'.html_safe, edit_machine_log_path(@machine, log), class: "btn" %></td> 
+                </tr>
+             <% end %>
+    
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="7">No logs found for this machine.  Click the 'New Log' button to create a new log.</td>
+    </tr>
+  <% end %>
+</table>

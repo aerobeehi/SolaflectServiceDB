@@ -1,0 +1,53 @@
+<div class="container">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2 class="panel-title">Log for <%= @context %> <%= @context.sn %></h2>
+  </div>    
+      <div class="panel-body">
+
+        <div class = "row">
+            <div class = "col-md-8" > <%= @log.category %>
+            </div>
+        </div>
+          
+        <div class = "row"> 
+            <div class = "col-md-8" >
+             Observation: 
+                <div class="panel panel-default"> <%= @log.observation %> </div> 
+            </div>
+            <div class = "col-md-3" >
+            Observation Date: <%= @log.observationdate %> 
+            </div>    
+        </div>
+          
+        <div class = "row"> 
+            <div class = "col-md-8" >
+            Action: <%= @log.action %> 
+            </div>
+            <div class = "col-md-3" >
+            Action Date: <%= @log.actiondate %> 
+            </div>  
+        </div>
+          
+        <div class = "row">
+            <div class = " col-md-8" > <%= @log.status %>
+            </div>
+        </div>  
+          
+        <div class = "row">
+            <div class = "col-md-8" > <%= @log.assignedtouser %>
+            </div>
+        </div>    
+        
+        <div class = "row">
+            <div class = "col-md-8" > <%= @log.completedbyuser %>
+            </div>
+        </div>          
+          
+          
+        <div class = "row"> </div>
+        <div class = "row"> </div>
+
+
+</div>
+</div>    

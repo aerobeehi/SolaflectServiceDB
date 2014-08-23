@@ -1,0 +1,22 @@
+<div class= "row">
+    <div class= "col-md-6">
+      <%= render "infobox"%>
+    </div>
+    <div class= "col-md-6">
+      <%= render "statusbox"%>
+    </div>     
+</div>   
+
+
+
+<hr />
+ 
+<%= render "machinelogs" %>
+
+
+<div class="well">
+  <%= link_to "New Log", new_machine_log_path(@machine), class: "btn btn-default" %>
+  <%= link_to "Back to Machines", machines_path(@machines), class: "btn btn-default" %>      
+</div>
+
+

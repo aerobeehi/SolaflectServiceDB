@@ -1,0 +1,8 @@
+<%= bootstrap_form_for(@site, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-3" )  do |f| %>
+    <%= f.text_field :latitude, placeholder: "Enter latitude." %>
+    <%= f.text_field :longitude, placeholder: "Enter longitude." %>
+  
+ <%= f.form_group do %>
+  <%= f.submit class: "btn btn-default" %>
+ <% end %>
+<% end %>

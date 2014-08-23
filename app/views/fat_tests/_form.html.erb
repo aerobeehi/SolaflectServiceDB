@@ -1,0 +1,47 @@
+<%= bootstrap_form_for(@fat_test, layout: :horizontal) do |f| %>
+ <%= f.collection_select(:user_id, User.all, :id, :firstname, label: "Tested by", label_col: "col-sm-2", control_col: "col-sm-2") %>
+
+<%= f.form_group do %>
+     <%= f.check_box :cfgfiles, label: "Add machine ID to list and make .cfg file." %>
+     <%= f.check_box :rs422, label: "RS422 communication is working." %>
+     <%= f.check_box :sensorspacing_up, label: "Up limit sensor triggers." %>
+     <%= f.check_box :sensorspacing_down, label: "Dowm limit sensor triggers." %>
+     <%= f.check_box :sensorspacing_az, label: "Azimuth limit sensor triggers - check east and west." %>
+     <%= f.check_box :homing, label: "Machine homes in both axes." %>
+<% end %>
+
+ <%= f.text_field :elrange, label: "Elevation range.", label_col: "col-sm-2", control_col: "col-sm-2" %>
+
+<%= f.form_group do %>
+    <%= f.check_box :elrepeat_status, label: "Elevation repeatability." %>
+
+    <h5>Elevation repeatability test: Home -> Vert -> Stow</h5>
+ <%= f.text_field :elrepeat_1, label: "Value 1", label_col: "col-sm-2", control_col: "col-sm-2" %>
+
+ <%= f.text_field :elrepeat_2, label: "Value 2", label_col: "col-sm-2", control_col: "col-sm-2" %>
+ <%= f.text_field :elrepeat_3, label: "Value 3", label_col: "col-sm-2", control_col: "col-sm-2" %>
+
+<% end %>
+
+  <% if @fat_test.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fat_test.errors.count, "error") %> prohibited this fat_test from being saved:</h2>
+
+      <ul>
+      <% @fat_test.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= f.form_group do %>
+    <div class="well col-md-4" >
+      <%= f.submit label:"submit", class: "btn btn-default" %>    
+      <%= link_to "Cancel",  machines_path(@machine), class: "btn btn-default" %>
+    </div>
+ <% end %>
+<% end %>
+
+
+

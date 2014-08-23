@@ -1,0 +1,19 @@
+<div class= "row">
+    <div class= "col-md-6">
+      <%= render "infobox"%>
+    </div>
+    <div class= "col-md-6">
+      <%= render "statusbox"%>
+    </div>     
+</div>   
+
+
+<hr />
+
+<%= render "boxlogs" %>
+
+<div class="well">
+  <%= link_to "New Log", new_box_log_path(@box), class: "btn btn-default" %>
+  <%= link_to "Back to Boxes", boxes_path(@boxes), class: "btn btn-default" %>    
+</div>
+

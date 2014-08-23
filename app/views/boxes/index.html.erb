@@ -1,0 +1,49 @@
+<h1>Boxes</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Box SN</th>
+      <th>Board SN</th>
+      <th>Firmware Version</th>
+      <th>Service Status</th>    
+      <th>Number of Logs</th>
+      <th>Last Update</th>     
+    </tr>
+  </thead>
+  <tbody>
+    <% if @boxes.count == 0 %>
+      <tr>
+        <td colspan="6">
+          No boxes found.  Click the button below to add a new one.
+        </td>
+      </tr>
+    <% else %>
+      <% @boxes.each do |box| %>
+        
+      <% if box.servicestatus == "Service" %>      
+        <tr class = "danger">
+          <td><%= link_to box.sn, box %></td>
+          <td><%= box.board.sn %> </td> 
+          <td><%= box.board.firmware %> </td>  
+          <td><%= box.logs.count %></td>
+          <td><%= box.updated_at %></td>
+        </tr>
+      <% else %>
+        <tr class = "default">
+          <td><%= link_to box.sn, box %></td>
+          <td><%= box.board.sn %> </td>
+          <td><%= box.board.firmware %> </td>
+          <td><%= box.logs.count %></td>
+          <td><%= box.updated_at %></td>        
+        </tr>
+      <% end %>
+      
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="well">
+<%= link_to "New Box", new_box_path, class: "btn btn-default" %>
+</div>

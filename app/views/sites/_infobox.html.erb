@@ -1,0 +1,9 @@
+ <div class = "panel panel-default">
+   <div class = "panel-heading"> 
+      <p>Site Information</p>
+   </div>
+    <div class =  "panel-body">
+        <h1>Site: <%= @site.customer.lastname %></h1>
+        <%= link_to '<i class="glyphicon glyphicon-pencil"></i> Edit'.html_safe, edit_site_path(@site), class: "btn" %> 
+    </div>
+</div>  

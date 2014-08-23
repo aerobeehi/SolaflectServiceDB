@@ -1,0 +1,22 @@
+<%= bootstrap_form_for([@context, @log], layout: :horizontal)  do |f| %>
+    <%= f.text_area :observation, placeholder: "Enter observation or reason for service.", label_col: "col-sm-2", control_col: "col-sm-9" %>
+    <%= f.date_select :observationdate, label: "Observation Date" %>
+    <%= f.text_area :action, placeholder: "Enter observation or reason for service.", control_col: "col-sm-9" %>
+    <%= f.date_select :actiondate, label: "Action Date" %>  
+
+    <%= f.select :category, options_for_select(@categories.collect { |c| [c[0].humanize, c[0]] }, selected: @log.category), label_col: "col-sm-2", control_col: "col-sm-2"  %>
+
+    <%= f.select :status, options_for_select(@statuses.collect { |s| [s[0].humanize, s[0]] }, selected: @log.status), label_col: "col-sm-2", control_col: "col-sm-2"  %>
+
+    <%= f.collection_select(:assignedtouser, User.all, :id, :firstname, label: "Assigned To", label_col: "col-sm-2", control_col: "col-sm-2") %>
+
+    <%= f.collection_select(:completedbyuser, User.all, :id, :firstname, label: "Completed By", label_col: "col-sm-2", control_col: "col-sm-2") %>
+
+
+<%= f.form_group do %>
+    <div class="well col-md-4" >
+      <%= f.submit label:"submit", class: "btn btn-default" %>    
+      <%= link_to "Cancel", @context, class: "btn btn-default" %>
+    </div>
+ <% end %>
+<% end %>

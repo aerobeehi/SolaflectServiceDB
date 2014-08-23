@@ -1,0 +1,40 @@
+<h3>Site Logs</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Observation</th>
+      <th>Created On</th>
+      <th>Submitted By</th>    
+      <th>Status</th>    
+      <td>&nbsp;</td>
+    </tr>
+  </thead>
+   <% if @site.logs.count > 0 %>
+    
+    <% @site.logs.each do |log| %>
+     <% if log.status == "open"  %>
+        <tr class="warning">
+            <td><%= log.observation %></td>
+            <td><%= time_ago_in_words log.created_at %> ago</td>
+            <td><%= log.assignedtouser %></td>
+            <td><%= log.status.humanize %></td>  
+            <td><%= link_to '<i class="glyphicon glyphicon-pencil"></i> Edit'.html_safe, edit_site_log_path(@site, log), class: "btn" %></td> 
+        </tr>
+      <% else %>
+        <tr class="default">
+            <td><%= log.observation %></td>
+            <td><%= time_ago_in_words log.created_at %> ago</td>
+            <td><%= log.assignedtouser %></td>
+            <td><%= log.status.humanize %></td>
+            <td><%= link_to '<i class="glyphicon glyphicon-pencil"></i> Edit'.html_safe, edit_site_log_path(@site, log), class: "btn" %></td> 
+        </tr>
+     <% end %>
+    
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="2">No logs found for this site.  Click the 'New Log' button to create a new log.</td>
+    </tr>
+  <% end %>
+</table>

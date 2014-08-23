@@ -1,0 +1,2 @@
+module FatTestsHelper
+end

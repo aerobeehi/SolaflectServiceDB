@@ -1,0 +1,11 @@
+<%= bootstrap_form_for(@box, layout: :horizontal )  do |f| %>
+    <%= f.text_field :sn, label: "Serial Number", placeholder: "Enter a serial number.", label_col: "col-sm-2", control_col: "col-sm-3" %>
+    <%= f.select(:board_id, @board_options, label_col: "col-sm-2", control_col: "col-sm-3") %> 
+  
+<%= f.form_group do %>
+    <div class="well col-md-4" >
+      <%= f.submit class: "btn btn-default" %>    
+      <%= link_to "Cancel", boxes_path(@box), class: "btn btn-default" %>
+    </div>
+ <% end %>
+<% end %>
