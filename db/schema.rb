@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140822131952) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "boards", force: true do |t|
     t.string   "sn"
     t.string   "firmware"
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140822131952) do
     t.integer  "servicestatus", default: 1
   end
 
-  add_index "boxes", ["board_id"], name: "index_boxes_on_board_id"
+  add_index "boxes", ["board_id"], name: "index_boxes_on_board_id", using: :btree
 
   create_table "customers", force: true do |t|
     t.string   "firstname"
@@ -71,8 +74,8 @@ ActiveRecord::Schema.define(version: 20140822131952) do
     t.datetime "updated_at"
   end
 
-  add_index "fat_tests", ["machine_id"], name: "index_fat_tests_on_machine_id"
-  add_index "fat_tests", ["user_id"], name: "index_fat_tests_on_user_id"
+  add_index "fat_tests", ["machine_id"], name: "index_fat_tests_on_machine_id", using: :btree
+  add_index "fat_tests", ["user_id"], name: "index_fat_tests_on_user_id", using: :btree
 
   create_table "logs", force: true do |t|
     t.text     "observation"
@@ -91,9 +94,9 @@ ActiveRecord::Schema.define(version: 20140822131952) do
     t.datetime "updated_at"
   end
 
-  add_index "logs", ["assignedtouser"], name: "index_logs_on_assignedtouser"
-  add_index "logs", ["completedbyuser"], name: "index_logs_on_completedbyuser"
-  add_index "logs", ["logable_id", "logable_type"], name: "index_logs_on_logable_id_and_logable_type"
+  add_index "logs", ["assignedtouser"], name: "index_logs_on_assignedtouser", using: :btree
+  add_index "logs", ["completedbyuser"], name: "index_logs_on_completedbyuser", using: :btree
+  add_index "logs", ["logable_id", "logable_type"], name: "index_logs_on_logable_id_and_logable_type", using: :btree
 
   create_table "machines", force: true do |t|
     t.string   "sn"
@@ -104,7 +107,7 @@ ActiveRecord::Schema.define(version: 20140822131952) do
     t.datetime "updated_at"
   end
 
-  add_index "machines", ["box_id"], name: "index_machines_on_box_id"
+  add_index "machines", ["box_id"], name: "index_machines_on_box_id", using: :btree
 
   create_table "sites", force: true do |t|
     t.string   "latitude"
@@ -116,8 +119,8 @@ ActiveRecord::Schema.define(version: 20140822131952) do
     t.datetime "updated_at"
   end
 
-  add_index "sites", ["customer_id"], name: "index_sites_on_customer_id"
-  add_index "sites", ["machine_id"], name: "index_sites_on_machine_id"
+  add_index "sites", ["customer_id"], name: "index_sites_on_customer_id", using: :btree
+  add_index "sites", ["machine_id"], name: "index_sites_on_machine_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "user_id"
@@ -138,7 +141,7 @@ ActiveRecord::Schema.define(version: 20140822131952) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
