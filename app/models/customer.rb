@@ -4,6 +4,4 @@ class Customer < ActiveRecord::Base
     
     has_one :site
     
-    accepts_nested_attributes_for :site, :machine
-    
 end
