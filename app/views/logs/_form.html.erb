@@ -8,9 +8,8 @@
 
     <%= f.select :status, options_for_select(@statuses.collect { |s| [s[0].humanize, s[0]] }, selected: @log.status), label_col: "col-sm-2", control_col: "col-sm-2"  %>
 
-    <%= f.collection_select(:assignedtouser, User.all, :id, :firstname, label: "Assigned To", label_col: "col-sm-2", control_col: "col-sm-2") %>
-
-    <%= f.collection_select(:completedbyuser, User.all, :id, :firstname, label: "Completed By", label_col: "col-sm-2", control_col: "col-sm-2") %>
+    <%= f.collection_select(:assignedtouser, User.all, :firstname, :firstname, label: "Assigned To", label_col: "col-sm-2", control_col: "col-sm-2") %>
+    <%= f.collection_select(:completedbyuser, User.all, :firstname, :firstname, label: "Completed By", label_col: "col-sm-2", control_col: "col-sm-2") %>
 
 
 <%= f.form_group do %>

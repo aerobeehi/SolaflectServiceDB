@@ -3,7 +3,7 @@ class CreateMachines < ActiveRecord::Migration
     create_table :machines do |t|
       t.string :sn
       t.string :box_id    
-      t.string :location 
+      t.string :location, default: "Shop" 
       t.integer :servicestatus, default: 1    
         
       t.timestamps

@@ -114,13 +114,13 @@ ActiveRecord::Schema.define(version: 20140822131952) do
     t.string   "longitude"
     t.integer  "sitestatus"
     t.string   "machine_id"
-    t.string   "customer_id"
+    t.string   "sitename"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "sites", ["customer_id"], name: "index_sites_on_customer_id", using: :btree
   add_index "sites", ["machine_id"], name: "index_sites_on_machine_id", using: :btree
+  add_index "sites", ["sitename"], name: "index_sites_on_sitename", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "user_id"

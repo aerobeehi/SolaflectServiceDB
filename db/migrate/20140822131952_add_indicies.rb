@@ -5,7 +5,7 @@ class AddIndicies < ActiveRecord::Migration
       add_index :machines, :box_id
       
       add_index :sites, :machine_id
-      add_index :sites, :customer_id
+      add_index :sites, :sitename
       
       add_index :logs, :assignedtouser
       add_index :logs, :completedbyuser

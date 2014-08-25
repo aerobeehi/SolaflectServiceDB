@@ -3,10 +3,10 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>Site SN</th>
-      <th>Firmware Version</th>
-      <th>Service Status</th>    
-      <th>Number of Logs</th>
+      <th>Site Name</th>
+      <th>Machine</th>
+      <th>Latitude</th>    
+      <th>Longitude</th>
       <th>Last Update</th>     
     </tr>
   </thead>
@@ -22,18 +22,18 @@
       
         <% if site.sitestatus == "Service" %>      
             <tr class = "danger">
-              <td><%= link_to "#{site.name}", site %></td>
-              <td><%= site.firmware %> </td>
-              <td><%= site.servicestatus%></td>    
-              <td><%= site.logs.count %></td>
+              <td><%= link_to "#{site.sitename}", site %></td>
+              <td><%= site.machine.sn %> </td>
+              <td><%= site.latitude %></td>    
+              <td><%= site.longitude %></td>
               <td><%= site.updated_at %></td>    
             </tr>
         <% else %>
             <tr class = "default">
-              <td><%= link_to "#{site.sn}", site %></td>
-              <td><%= site.firmware %> </td>
-              <td><%= site.servicestatus %></td>     
-              <td><%= site.logs.count %></td>
+              <td><%= link_to "#{site.sitename}", site %></td>
+              <td><%= site.machine.sn %> </td>
+              <td><%= site.latitude %></td>    
+              <td><%= site.longitude %></td>
               <td><%= site.updated_at %></td> 
               </td>
             </tr>
@@ -48,11 +48,3 @@
 <%= link_to "New Site", new_site_path, class: "btn btn-default " %>
 </div>
 
-
- 
-<% case params[:animal]
-when "dog" %>
-<p>Barf!</p>
-<% when "cat" %>
-<p>Meow!</p>
-<% end %>

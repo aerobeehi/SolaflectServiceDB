@@ -48,7 +48,7 @@ def destroy
 private
     
   def box_params
-    params.require(:box).permit(:sn, :board_id)
+    params.require(:box).permit!
   end
 
     

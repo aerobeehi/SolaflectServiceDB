@@ -19,4 +19,6 @@ class Log < ActiveRecord::Base
     
   enum category: [ :Electrical, :Mechanical, :Other ]    
     
+  
+    
 end

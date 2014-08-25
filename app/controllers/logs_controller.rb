@@ -8,7 +8,6 @@ def new
     @statuses = Log.statuses
     @categories = Log.categories
     @users = User.all
-    @user_options = User.all.map{ |user| [user.firstname, user.id] } 
   end
 
   def create
@@ -16,7 +15,6 @@ def new
     @log = @context.logs.new(log_params)
     @statuses = Log.statuses
     @categories = Log.categories 
-    @user_options = User.all.map{ |user| [user.firstname, user.id] }   
     @users = User.all  
     if @log.save
       redirect_to context_url(context), notice: "The log has been successfully created."
@@ -30,7 +28,6 @@ def new
     @log = context.logs.find(params[:id])
     @statuses = Log.statuses
     @categories = Log.categories  
-    @user_options = User.all.map{ |user| [user.firstname, user.id] } 
     @users = User.all      
   end
     
@@ -39,20 +36,20 @@ def new
     @log = context.logs.find(params[:id])
     @statuses = Log.statuses
     @categories = Log.categories
-    @user_options = User.all.map{ |user| [user.firstname, user.id] } 
     @users = User.all      
   end    
 
   def update
     @context = context
     @log = @context.logs.find(params[:id]) 
-    @user_options = User.all.map{ |user| [user.firstname, user.id] }   
+    @statuses = Log.statuses
+    @categories = Log.categories
     @users = User.all  
     if @log.update_attributes(log_params)    
       redirect_to context_url(context), notice: "The log has been updated"
     end
   end
-    
+
  
 private
   

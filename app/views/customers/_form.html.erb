@@ -1,0 +1,9 @@
+<%= bootstrap_form_for(@customer, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-3" )  do |f| %>
+    <%= f.text_field :firstname, label: "First Name" %>
+    <%= f.text_field :lastname, label: "Last Name" %>
+	<%= f.text_field :address, label: "Address" %>
+  
+ <%= f.form_group do %>
+  <%= f.submit class: "btn btn-default" %>
+ <% end %>
+<% end %>	

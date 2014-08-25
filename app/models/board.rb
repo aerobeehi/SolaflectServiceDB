@@ -12,5 +12,11 @@ class Board < ActiveRecord::Base
     
     # Status
     enum servicestatus: [ :Service, :OK ]  
+    
+    
+    # def open_logs?
+    #   @board = Board.includes(:logs).where('logs.status = ?', 'open').references(:logs)
+    #   @board.open_logs?
+    # end
 
 end

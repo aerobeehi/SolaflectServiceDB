@@ -21,7 +21,6 @@ class BoardsController < ApplicationController
 
   def create
     @board = Board.new(board_params)
-
     if @board.save         
          flash[:notice] = "Board <b>#{ @board.sn }</b> has been saved successfully."
       redirect_to(boards_path, :notice => "Board <b>#{ @board.sn }</b> has been saved successfully.")
@@ -35,6 +34,7 @@ class BoardsController < ApplicationController
   end
 
   def update
+    @boards = Board.all
     @board = Board.find(params[:id])
     if @board.update_attributes(board_params)
       redirect_to boards_path, notice: "The board has been updated"
@@ -46,11 +46,6 @@ class BoardsController < ApplicationController
     @board.destroy
   end
     
-def failed 
- if @board.log.failstatus == "fail"
-     @board.prodstatus == "Service"
- end 
-end 
     
 private
   def board_params

@@ -1,6 +1,7 @@
 <%= bootstrap_form_for(@machine, layout: :horizontal)  do |f| %>
-    <%= f.text_field :sn, label: "Serial Number", placeholder: "Enter a serial number.", label_col: "col-sm-2", control_col: "col-sm-3"  %>
-    <%= f.select(:box_id, @box_options, label_col: "col-sm-2", control_col: "col-sm-3") %> 
+    <%= f.text_field :sn, label: "Serial Number", placeholder: "XXXXPV.", help:"|machine version, number, type|", label_col: "col-sm-2", control_col: "col-sm-3"  %>
+  	<%= f.collection_select(:box_id, Box.all, :id, :sn, label: "Box", label_col: "col-sm-2", control_col: "col-sm-2") %>
+	
   
 <%= f.form_group do %>
     <div class="well col-md-4" >

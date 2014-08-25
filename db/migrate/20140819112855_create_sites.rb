@@ -5,7 +5,7 @@ class CreateSites < ActiveRecord::Migration
       t.string :longitude
       t.integer :sitestatus
       t.string :machine_id    
-      t.string :customer_id     
+      t.string :sitename    
 
       t.timestamps
     end

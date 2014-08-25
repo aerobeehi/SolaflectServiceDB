@@ -25,7 +25,14 @@ Rails.application.routes.draw do
     resources :boxes 
     resources :boards  
     resources :logs 
-  end        
+  end 
+
+  resources :customers do
+    resources :machines    
+    resources :boxes  
+  end 
+  
+         
     
   root to: "machines#index"
     
