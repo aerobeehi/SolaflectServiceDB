@@ -2,6 +2,7 @@
     <%= f.text_field :sn, label: "Serial Number", placeholder: "XXXXPV.", help:"|machine version, number, type|", label_col: "col-sm-2", control_col: "col-sm-3"  %>
   	<%= f.collection_select(:box_id, Box.all, :id, :sn, label: "Box", label_col: "col-sm-2", control_col: "col-sm-2") %>
 	
+	<%= f.date_select :installdate, label: "Install Date", label_col: "col-sm-2", control_col: "col-sm-2" %>
   
 <%= f.form_group do %>
     <div class="well col-md-4" >
