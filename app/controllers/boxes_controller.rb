@@ -5,30 +5,32 @@ class BoxesController < ApplicationController
   def index
     @boxes = Box.all
     @boards = Board.all
+    @machines = Machine.all
   end
 
   def show 
     @box = Box.find(params[:id])
+    @machines = Machine.all
   end
 
   def new
-    @board_options = Board.all.map{ |board| [board.sn, board.id] }  
+    @boards = Board.all 
     @box = Box.new 
   end
     
   def create
-    @board_options = Board.all.map{ |board| [board.sn, board.id] }    
+    @boards = Board.all 
     @box = Box.new(box_params) 
     if @box.save         
-         flash[:notice] = "Box <b>#{ @box.sn }</b> has been saved successfully."
-      redirect_to(boxes_path, :notice => "Box <b>#{ @box.sn }</b> has been saved successfully.")
+         flash[:notice] = "Box <b>#{ @box.box_sn }</b> has been saved successfully."
+      redirect_to(boxes_path, :notice => "Box <b>#{ @box.box_sn }</b> has been saved successfully.")
     else
       render(:new, :error => @box.errors)
     end    
   end
 
   def edit
-    @board_options = Board.all.map{ |board| [board.sn, board.id] }  
+    @boards = Board.all 
     @box = Box.find(params[:id])
   end
 

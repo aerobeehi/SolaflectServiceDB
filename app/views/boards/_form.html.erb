@@ -1,5 +1,5 @@
 <%= bootstrap_form_for(@board, layout: :horizontal )  do |f| %>
-    <%= f.text_field :sn, label: "Serial Number", placeholder: "XXXXX.", help:"|STC version, board number|", label_col: "col-md-2", control_col: "col-sm-3" %>
+    <%= f.text_field :board_sn, label: "Serial Number", placeholder: "XXXXX.", help:"|STC version, board number|", label_col: "col-md-2", control_col: "col-sm-3" %>
     <%= f.text_field :firmware, label: "Firmware Version", placeholder: "Enter version xx.xx.xx", label_col: "col-sm-2", control_col: "col-md-3" %>
 
 

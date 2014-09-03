@@ -4,8 +4,9 @@
   <thead>
     <tr>
       <th>Observation</th>
-      <th>Created On</th>
-      <th>Submitted By</th>    
+      <th>Action</th>
+      <th>Assigned To</th>
+	  <th>Date Submitted</th>    
       <th>Status</th>    
       <td>&nbsp;</td>
     </tr>
@@ -16,17 +17,19 @@
      <% if log.status == "open"  %>
         <tr class="warning">
             <td><%= log.observation %></td>
-            <td><%= time_ago_in_words log.created_at %> ago</td>
-            <td><%= log.assignedtouser %></td>
+            <td><%= log.action %></td>
+		    <td><%= log.assignedtouser %></td>
+			<td><%= log.created_at.strftime("%F") %></td>
             <td><%= log.status.humanize %></td>  
             <td><%= link_to '<i class="glyphicon glyphicon-pencil"></i> Edit'.html_safe, edit_site_log_path(@site, log), class: "btn" %></td> 
         </tr>
       <% else %>
         <tr class="default">
             <td><%= log.observation %></td>
-            <td><%= time_ago_in_words log.created_at %> ago</td>
-            <td><%= log.assignedtouser %></td>
-            <td><%= log.status.humanize %></td>
+            <td><%= log.action %></td>
+		    <td><%= log.assignedtouser %></td>
+			<td><%= log.created_at.strftime("%F") %></td>
+            <td><%= log.status.humanize %></td>  
             <td><%= link_to '<i class="glyphicon glyphicon-pencil"></i> Edit'.html_safe, edit_site_log_path(@site, log), class: "btn" %></td> 
         </tr>
      <% end %>

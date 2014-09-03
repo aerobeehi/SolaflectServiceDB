@@ -2,11 +2,11 @@ class Site < ActiveRecord::Base
         
     has_many :logs, as: :logable
     
-    belongs_to :customers
+    belongs_to :customer
     
-    belongs_to :machines
+    belongs_to :machine
     
-    accepts_nested_attributes_for :logs, :machines, :customers
+    accepts_nested_attributes_for :logs, :machine, :customer
      
     enum sitestatus: [ :Service, :OK ] 
     

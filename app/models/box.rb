@@ -1,6 +1,6 @@
 class Box < ActiveRecord::Base
     # Field Validations
-    validates :sn, format: { with: /\d{1,2}\-\d{3}/, message: "Please enter valid serial number." }
+    validates :box_sn, format: { with: /\d{1,2}\-\d{3}/, message: "Please enter valid serial number." }
     
     has_many :logs, as: :logable
     

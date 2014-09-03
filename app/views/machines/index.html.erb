@@ -5,9 +5,11 @@
     <tr>
       <th>Machine SN</th>
       <th>Box SN</th>
-      <th>Site</th>    
+      <th>Site</th> 
+	  <th>Location</th>   
       <th>Service Status</th>    
       <th>Number of Logs</th>
+	  <th>Created On</th>
       <th>Last Update</th>
     </tr>
   </thead>
@@ -15,31 +17,22 @@
     <% if @machines.count == 0 %>
       <tr>
         <td colspan="7">
-          No machines found.  Click the button above to add a new one.
+          No machines found. Click the button below to add a new one.
         </td>
       </tr>
     <% else %>
       <% @machines.each do |machine| %>
-           
-        <% if machine.servicestatus == "service" %>
-          <tr class = "warning">
-              <td><%= link_to "#{machine.sn}", machine %></td>
-              <td><%= machine.box.sn %></td>
-              <td><%= machine.site %></td>
+
+          <tr class = "default">
+              <td><%= link_to "#{machine.machine_sn}", machine %></td>
+              <td><%= machine.box.box_sn %></td>
+              <td><%= machine.site.sitename %></td>
+			  <td><%= machine.site.latitude %>, <%= machine.site.longitude %></td>
               <td><%= machine.servicestatus %></td>
               <td><%= machine.logs.count %></td>
-              <td><%= machine.updated_at %></td>
+			  <td><%= machine.created_at.strftime("%F") %></td>
+              <td><%= machine.updated_at.strftime("%F") %></td>
           </tr>
-        <% else %>
-          <tr class = "default">
-              <td><%= link_to "#{machine.sn}", machine %></td>
-              <td><%= machine.box.sn %> </td>
-              <td><%= machine.site %> </td>
-              <td><%= machine.servicestatus %> </td>
-              <td><%= machine.logs.count %></td>
-              <td><%= machine.updated_at %></td>
-          </tr>
-        <% end %> 
 
       <% end %>
     <% end %>

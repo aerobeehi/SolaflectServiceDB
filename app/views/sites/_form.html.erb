@@ -2,8 +2,9 @@
     <%= f.collection_select(:sitename, Customer.all, :lastname, :lastname, label: "Site Name", help: "Select from customers.", label_col: "col-sm-2", control_col: "col-sm-3") %>
 	<%= f.text_field :latitude, placeholder: "Enter latitude." %>
     <%= f.text_field :longitude, placeholder: "Enter longitude." %>
+	<%= f.date_select :commisiondate, label:"Date Commisioned" %>
 	
-	<%= f.collection_select(:machine_id, Machine.all, :id, :sn, label: "Machine", label_col: "col-sm-2", control_col: "col-sm-2") %>
+	<%= f.collection_select(:machine_id, Machine.all, :id, :machine_sn, label: "Machine", label_col: "col-sm-2", control_col: "col-sm-2") %>
 
 	
   

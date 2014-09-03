@@ -7,6 +7,7 @@
       <th>Firmware Version</th>
       <th>Service Status</th>    
       <th>Number of Logs</th>
+      <th>Created On</th>     	  
       <th>Last Update</th>     
     </tr>
   </thead>
@@ -19,25 +20,16 @@
       </tr>
     <% else %>
       <% @boards.each do |board| %>
-      
-        <% if board.servicestatus == "Service" %>      
-            <tr class = "danger">
-              <td><%= link_to "#{board.sn}", board %></td>
-              <td><%= board.firmware %> </td>
-              <td><%= board.servicestatus%></td>    
-              <td><%= board.logs.count %></td>
-              <td><%= board.updated_at %></td>    
-            </tr>
-        <% else %>
+	  
             <tr class = "default">
-              <td><%= link_to "#{board.sn}", board %></td>
+              <td><%= link_to "#{board.board_sn}", board %></td>			  
               <td><%= board.firmware %> </td>
               <td><%= board.servicestatus %></td>     
               <td><%= board.logs.count %></td>
-              <td><%= board.updated_at %></td> 
+			  <td><%= board.created_at.strftime("%F") %></td>
+              <td><%= board.updated_at.strftime("%F") %></td> 
               </td>
             </tr>
-        <% end %>
         
       <% end %>
     <% end %>
@@ -48,11 +40,3 @@
 <%= link_to "New Board", new_board_path, class: "btn btn-default " %>
 </div>
 
-
- 
-<% case params[:animal]
-when "dog" %>
-<p>Barf!</p>
-<% when "cat" %>
-<p>Meow!</p>
-<% end %>

@@ -3,15 +3,14 @@ class BoardsController < ApplicationController
     before_action :authenticate_user!
     
   def index
+    @machines = Machine.all
+    @boxes = Box.all
     @boards = Board.all
-    @user_options = User.all.map{ |user| [user.firstname, user.id] }  
-    @users = User.all        
   end
 
     
   def show
     @board = Board.find(params[:id])
-    @user_options = User.all.map{ |user| [user.firstname, user.id] }  
     @users = User.all  
   end
 
@@ -22,8 +21,8 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save         
-         flash[:notice] = "Board <b>#{ @board.sn }</b> has been saved successfully."
-      redirect_to(boards_path, :notice => "Board <b>#{ @board.sn }</b> has been saved successfully.")
+         flash[:notice] = "Board has been saved successfully."
+      redirect_to(boards_path, :notice => "Board has been saved successfully.")
     else
       render(:new, :error => @board.errors)
     end    

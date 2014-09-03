@@ -1,7 +1,7 @@
 <%= bootstrap_form_for(@box, layout: :horizontal )  do |f| %>
-    <%= f.text_field :sn, label: "Serial Number", placeholder: "XX - XXX", label_col: "col-sm-2", control_col: "col-sm-3", help: "|STC version| - |box number|" %>
-    <%= f.select(:board_id, @board_options, label_col: "col-sm-2", control_col: "col-sm-3") %> 
-  
+    <%= f.text_field :box_sn, label: "Serial Number", placeholder: "XX - XXX", label_col: "col-sm-2", control_col: "col-sm-3", help: "|STC version| - |box number|" %>
+    <%= f.collection_select(:board_id, Board.all, :id, :board_sn, label: "Board", label_col: "col-sm-2", control_col: "col-sm-2") %>
+	
 <%= f.form_group do %>
     <div class="well col-md-4" >
       <%= f.submit class: "btn btn-default" %>    

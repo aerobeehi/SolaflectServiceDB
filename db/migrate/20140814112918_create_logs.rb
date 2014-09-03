@@ -2,9 +2,7 @@ class CreateLogs < ActiveRecord::Migration
   def change
     create_table :logs do |t|
       t.text :observation
-      t.datetime :observationdate    
       t.text :action
-      t.datetime :actiondate    
       t.string :location
       t.integer :personhours
       t.string :assignedtouser

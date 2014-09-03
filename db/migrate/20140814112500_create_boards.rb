@@ -3,6 +3,8 @@ class CreateBoards < ActiveRecord::Migration
     create_table :boards do |t|
       t.string :sn
       t.string :firmware
+      t.integer :servicestatus, default: 1
+      t.integer :servicecategory
 
       t.timestamps
     end    

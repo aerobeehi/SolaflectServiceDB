@@ -11,21 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825194954) do
+ActiveRecord::Schema.define(version: 20140822131952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "boards", force: true do |t|
-    t.string   "sn"
+    t.string   "board_sn"
     t.string   "firmware"
+    t.integer  "servicestatus",   default: 1
+    t.integer  "servicecategory"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "servicestatus", default: 1
   end
 
   create_table "boxes", force: true do |t|
-    t.string   "sn"
+    t.string   "box_sn"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "board_id"
@@ -79,9 +80,7 @@ ActiveRecord::Schema.define(version: 20140825194954) do
 
   create_table "logs", force: true do |t|
     t.text     "observation"
-    t.datetime "observationdate"
     t.text     "action"
-    t.datetime "actiondate"
     t.string   "location"
     t.integer  "personhours"
     t.string   "assignedtouser"
@@ -99,13 +98,13 @@ ActiveRecord::Schema.define(version: 20140825194954) do
   add_index "logs", ["logable_id", "logable_type"], name: "index_logs_on_logable_id_and_logable_type", using: :btree
 
   create_table "machines", force: true do |t|
-    t.string   "sn"
+    t.string   "machine_sn"
     t.string   "box_id"
-    t.string   "location"
+    t.date     "installdate"
+    t.string   "location",      default: "Shop"
     t.integer  "servicestatus", default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "installdate"
   end
 
   add_index "machines", ["box_id"], name: "index_machines_on_box_id", using: :btree
@@ -113,6 +112,7 @@ ActiveRecord::Schema.define(version: 20140825194954) do
   create_table "sites", force: true do |t|
     t.string   "latitude"
     t.string   "longitude"
+    t.date     "commisiondate"
     t.integer  "sitestatus"
     t.string   "machine_id"
     t.string   "sitename"

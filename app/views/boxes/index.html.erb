@@ -8,6 +8,7 @@
       <th>Firmware Version</th>
       <th>Service Status</th>    
       <th>Number of Logs</th>
+	  <th>Created On</th>
       <th>Last Update</th>     
     </tr>
   </thead>
@@ -20,24 +21,16 @@
       </tr>
     <% else %>
       <% @boxes.each do |box| %>
-        
-      <% if box.servicestatus == "Service" %>      
-        <tr class = "danger">
-          <td><%= link_to box.sn, box %></td>
-          <td><%= box.board.sn %> </td> 
-          <td><%= box.board.firmware %> </td>  
-          <td><%= box.logs.count %></td>
-          <td><%= box.updated_at %></td>
-        </tr>
-      <% else %>
+
         <tr class = "default">
-          <td><%= link_to box.sn, box %></td>
-          <td><%= box.board.sn %> </td>
-          <td><%= box.board.firmware %> </td>
+          <td><%= link_to box.box_sn, box %></td>
+          <td><%= box.board.board_sn %> </td> 
+          <td><%= box.board.firmware %> </td>  
+		  <td><%= box.servicestatus %> </td>
           <td><%= box.logs.count %></td>
-          <td><%= box.updated_at %></td>        
+		  <td><%= box.updated_at.strftime("%F") %></td>
+          <td><%= box.created_at.strftime("%F") %></td>
         </tr>
-      <% end %>
       
       <% end %>
     <% end %>

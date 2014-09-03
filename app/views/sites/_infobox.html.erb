@@ -4,6 +4,9 @@
    </div>
     <div class =  "panel-body">
         <h1>Site: <%= @site.customer.lastname %></h1>
+		<h1>Machine: <%= @site.machine.machine_sn %></h1>
+		<h1>Machine: <%= @site.machine.box.box_sn %></h1>
+		<h1>Date Comissioned: <%= @site.commisiondate %></h1>
         <%= link_to '<i class="glyphicon glyphicon-pencil"></i> Edit'.html_safe, edit_site_path(@site), class: "btn" %> 
     </div>
 </div>  

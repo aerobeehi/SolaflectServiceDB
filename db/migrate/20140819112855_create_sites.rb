@@ -3,6 +3,7 @@ class CreateSites < ActiveRecord::Migration
     create_table :sites do |t|
       t.string :latitude
       t.string :longitude
+      t.date :commisiondate
       t.integer :sitestatus
       t.string :machine_id    
       t.string :sitename    

@@ -7,6 +7,8 @@
       <th>Machine</th>
       <th>Latitude</th>    
       <th>Longitude</th>
+	  <th>Date Comissioned</th>
+	  <th>Created On</th>
       <th>Last Update</th>     
     </tr>
   </thead>
@@ -14,30 +16,21 @@
     <% if @sites.count == 0 %>
       <tr>
         <td colspan="6">
-          No sites found.  Click the button above to add a new one.
+          No sites found.  Click the button below to add a new one.
         </td>
       </tr>
     <% else %>
       <% @sites.each do |site| %>
-      
-        <% if site.sitestatus == "Service" %>      
-            <tr class = "danger">
-              <td><%= link_to "#{site.sitename}", site %></td>
-              <td><%= site.machine.sn %> </td>
-              <td><%= site.latitude %></td>    
-              <td><%= site.longitude %></td>
-              <td><%= site.updated_at %></td>    
-            </tr>
-        <% else %>
+
             <tr class = "default">
               <td><%= link_to "#{site.sitename}", site %></td>
-              <td><%= site.machine.sn %> </td>
+              <td><%= site.machine.machine_sn %></td>   
               <td><%= site.latitude %></td>    
               <td><%= site.longitude %></td>
-              <td><%= site.updated_at %></td> 
-              </td>
+			  <td><%= site.commisiondate %></td>
+              <td><%= site.created_at.strftime("%F") %></td>    			  
+              <td><%= site.updated_at.strftime("%F") %></td>    
             </tr>
-        <% end %>
         
       <% end %>
     <% end %>

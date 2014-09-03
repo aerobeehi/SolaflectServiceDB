@@ -1,6 +1,6 @@
 class Board < ActiveRecord::Base
     # Field Validations
-     validates :sn, format: { with: /\d{5}/, message: "Please enter valid serial number." }
+     validates :board_sn, format: { with: /\d{5}/, message: "Please enter valid serial number." }
      validates :firmware, format: { with: /\d{1,2}\.\d{1,2}\.\d{1,2}/, message: "Please enter valid firmware version." }
 
     
@@ -12,11 +12,5 @@ class Board < ActiveRecord::Base
     
     # Status
     enum servicestatus: [ :Service, :OK ]  
-    
-    
-    # def open_logs?
-    #   @board = Board.includes(:logs).where('logs.status = ?', 'open').references(:logs)
-    #   @board.open_logs?
-    # end
 
 end

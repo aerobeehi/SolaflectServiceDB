@@ -6,31 +6,32 @@ class MachinesController < ApplicationController
     @machines = Machine.all
     @boxes = Box.all
     @boards = Board.all
+    @sites = Site.all
     @fat_tests = FatTest.all    
   end
 
   def show 
     @machine = Machine.find(params[:id])
+    @sites = Site.all
     @fat_tests = FatTest.all  
   end
 
   def new
-    @box_options = Box.all.map{ |box| [box.sn, box.id] }  
+    @boxes = Box.all
     @machine = Machine.new 
   end
     
   def create
     @machine = Machine.new(machine_params) 
     if @machine.save         
-         flash[:notice] = "Box <b>#{ @machine.sn }</b> has been saved successfully."
-      redirect_to(machines_path, :notice => "Box <b>#{ @machine.sn }</b> has been saved successfully.")
+         flash[:notice] = "Box <b>#{ @machine.machine_sn }</b> has been saved successfully."
+      redirect_to(machines_path, :notice => "Box <b>#{ @machine.machine_sn }</b> has been saved successfully.")
     else
       render(:new, :error => @machine.errors)
     end  
   end
 
   def edit
-    @box_options = Box.all.map{ |box| [box.sn, box.id] }        
     @machine = Machine.find(params[:id])
     @fat_tests = FatTest.all    
   end

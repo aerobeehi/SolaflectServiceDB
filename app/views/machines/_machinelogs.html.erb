@@ -4,10 +4,9 @@
   <thead>
     <tr>
       <th>Observation</th>
-      <th>Observation Date</th>
       <th>Action</th>
-      <th>Action Date</th>
-      <th>Assigned To</th>    
+      <th>Assigned To</th>
+	  <th>Date Submitted</th>    
       <th>Status</th>    
       <td>&nbsp;</td>
     </tr>
@@ -17,24 +16,22 @@
     <% @machine.logs.order([created_at: :desc]).each do |log| %>
     
         <% if log.status == "open"  %>
-                <tr class="warning row-fluid">
-                    <td><%= log.observation %></td>
-                    <td><%= log.observationdate %></td>
-                    <td><%= log.action %></td>
-                    <td><%= log.actiondate %></td>
-                    <td><%= log.assignedtouser %></td>
-                    <td><%= log.status.humanize %></td>  
-                    <td><%= link_to '<i class="glyphicon glyphicon-eye-open"></i> View'.html_safe, machine_log_path(@machine, log), class: "btn" %><%= link_to '<i class="glyphicon glyphicon-pencil"></i> Edit'.html_safe, edit_machine_log_path(@machine, log), class: "btn" %></td> 
-                </tr>
-              <% else %>
-                <tr class="default row-fluid">
-                    <td><%= log.observation %></td>
-                    <td><%= log.observationdate %></td>
-                    <td><%= log.action %></td>
-                    <td><%= log.actiondate %></td>
-                    <td><%= log.assignedtouser %></td>
-                    <td><%= log.status.humanize %></td>
-                    <td><%= link_to '<i class="glyphicon glyphicon-eye-open"></i> View'.html_safe, machine_log_path(@machine, log), class: "btn" %><%= link_to '<i class="glyphicon glyphicon-pencil"></i> Edit'.html_safe, edit_machine_log_path(@machine, log), class: "btn" %></td> 
+            <tr class="warning row-fluid">
+            <td><%= log.observation %></td>
+            <td><%= log.action %></td>
+		    <td><%= log.assignedtouser %></td>
+            <td><%= log.created_at.strftime("%F") %></td>
+            <td><%= log.status.humanize %></td>    
+            <td><%= link_to '<i class="glyphicon glyphicon-eye-open"></i> View'.html_safe, machine_log_path(@machine, log), class: "btn" %><%= link_to '<i class="glyphicon glyphicon-pencil"></i> Edit'.html_safe, edit_machine_log_path(@machine, log), class: "btn" %></td> 
+            </tr>
+        <% else %>
+            <tr class="default row-fluid">
+            <td><%= log.observation %></td>
+            <td><%= log.action %></td>
+		    <td><%= log.assignedtouser %></td>
+			<td><%= log.created_at.strftime("%F") %></td>
+            <td><%= log.status.humanize %></td>  
+            <td><%= link_to '<i class="glyphicon glyphicon-eye-open"></i> View'.html_safe, machine_log_path(@machine, log), class: "btn" %><%= link_to '<i class="glyphicon glyphicon-pencil"></i> Edit'.html_safe, edit_machine_log_path(@machine, log), class: "btn" %></td> 
                 </tr>
              <% end %>
     

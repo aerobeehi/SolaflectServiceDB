@@ -4,12 +4,14 @@ Rails.application.routes.draw do
 
   devise_for :users
     
-  resources :boards do   
+  resources :boards do
+    resources :boxes   
     resources :logs
   end
 
   resources :boxes do
-    resources :boards  
+    resources :boards
+    resources :machines  
     resources :logs
   end
     

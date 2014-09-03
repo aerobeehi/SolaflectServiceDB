@@ -11,7 +11,7 @@ class SitesController < ApplicationController
     @fat_tests = FatTest.all    
   end
 
-  def show 
+  def show
     @site = Site.find(params[:id])
     @machines = Machine.all
     @customers = Customer.all
